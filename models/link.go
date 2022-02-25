@@ -45,13 +45,13 @@ func linkFromNode(node *html.Node) (link Link) {
 	}
 
 	// set text
-	link.Text = iterateLinkTexts(node, &link)
+	link.Text = iterateTextNodes(node, &link)
 	return link
 }
 
-// iterateLinkTexts recursively iterates over Text Nodes and child
+// iterateTextNodes recursively iterates over Text Nodes and child
 // to retrieve a concatenation of the data contents.
-func iterateLinkTexts(node *html.Node, link *Link) string {
+func iterateTextNodes(node *html.Node, link *Link) string {
 	var text string
 	for child := node.FirstChild; child != nil; child = child.NextSibling {
 		// append the data when the child is a text
@@ -60,7 +60,7 @@ func iterateLinkTexts(node *html.Node, link *Link) string {
 
 			// recurse if the child is an element
 		} else if child.Type == html.ElementNode {
-			text += iterateLinkTexts(child, link)
+			text += iterateTextNodes(child, link)
 		}
 	}
 	return text
