@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 
-	"golang.org/x/net/html"
 	"html-link-parser/models"
 )
 
@@ -22,11 +21,10 @@ func main() {
 		}
 	}()
 
-	node, err := html.Parse(htmlFile)
+	links, err := models.BuildLinks(htmlFile)
 	if err != nil {
-		log.Fatalf("Unable to parse HTML: %v", err.Error())
+		log.Fatalf("Unable to build HTML: %v", err.Error())
 	}
 
-	links := models.BuildLinks(node)
 	fmt.Printf("%v\n", links)
 }
