@@ -7,7 +7,7 @@ import (
 )
 
 type Link struct {
-	Href string
+	Url  string
 	Text string
 }
 
@@ -39,7 +39,7 @@ func linkFromNode(node *html.Node) (link Link) {
 	// set href
 	for _, attr := range node.Attr {
 		if attr.Key == "href" {
-			link.Href = attr.Val
+			link.Url = attr.Val
 			break
 		}
 	}
@@ -50,7 +50,7 @@ func linkFromNode(node *html.Node) (link Link) {
 }
 
 // iterateLinkTexts recursively iterates over Text Nodes and child
-// to retrieve a concantenation of the data contents.
+// to retrieve a concatenation of the data contents.
 func iterateLinkTexts(node *html.Node, link *Link) string {
 	var text string
 	for child := node.FirstChild; child != nil; child = child.NextSibling {
