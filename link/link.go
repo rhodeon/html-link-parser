@@ -1,3 +1,4 @@
+// Package link provides functions and methods for converting HTML hyperlink elements to native Go objects.
 package link
 
 import (
@@ -12,8 +13,10 @@ const (
 )
 
 // Link represents HTML hyperlink elements.
+//
 // Url corresponds to href.
-// Text corresponds to the content.
+//
+// Text corresponds to the content. Root text nodes have their spaces trimmed, and nested texts have duplicate spaces removed. This behaviour provides the text contents of hyperlinks as a continuous string without superfluous whitespaces.
 type Link struct {
 	Url  string
 	Text string
