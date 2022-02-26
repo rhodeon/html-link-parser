@@ -1,4 +1,4 @@
-module html-link-parser
+module github.com/rhodeon/html-link-parser
 
 go 1.17
 
