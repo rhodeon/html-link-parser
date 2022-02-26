@@ -72,23 +72,22 @@ func TestBuildLinks(t *testing.T) {
 			}
 		})
 	}
-
-}
-
-func TestLinks_GetTexts(t *testing.T) {
-	links := testLinks
-	want := []string{"github.com", "reddit.com", ""}
-	got := links.GetUrls()
-
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, want)
-	}
 }
 
 func TestLinks_GetUrls(t *testing.T) {
 	links := testLinks
 	want := []string{"share repository", "", "view profile"}
 	got := links.GetTexts()
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, want)
+	}
+}
+
+func TestLinks_GetTexts(t *testing.T) {
+	links := testLinks
+	want := []string{"github.com", "reddit.com", ""}
+	got := links.GetUrls()
 
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, want)
@@ -109,22 +108,6 @@ func ExampleBuildLinks() {
 	// Output: [{Url:/other-page Text:A link to another page} {Url:/another-page Text:A link to yet another page}]
 }
 
-func ExampleLinks_GetTexts() {
-	links := Links{
-		Link{
-			Url:  "github.com",
-			Text: "share repository",
-		},
-		Link{
-			Url: "reddit.com",
-		},
-	}
-
-	texts := links.GetTexts()
-	fmt.Printf("%#v", texts)
-	// Output: []string{"share repository", ""}
-}
-
 func ExampleLinks_GetUrls() {
 	links := Links{
 		Link{
@@ -139,4 +122,20 @@ func ExampleLinks_GetUrls() {
 	urls := links.GetUrls()
 	fmt.Printf("%#v", urls)
 	// Output: []string{"github.com", ""}
+}
+
+func ExampleLinks_GetTexts() {
+	links := Links{
+		Link{
+			Url:  "github.com",
+			Text: "share repository",
+		},
+		Link{
+			Url: "reddit.com",
+		},
+	}
+
+	texts := links.GetTexts()
+	fmt.Printf("%#v", texts)
+	// Output: []string{"share repository", ""}
 }
