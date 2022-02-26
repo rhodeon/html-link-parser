@@ -23,9 +23,9 @@ type Link struct {
 type Links []Link
 
 // BuildLinks returns a list of links from the given Reader.
-func BuildLinks(r io.Reader) (Links, error) {
+func BuildLinks(htmlReader io.Reader) (Links, error) {
 	var links Links
-	node, err := html.Parse(r)
+	node, err := html.Parse(htmlReader)
 	if err != nil {
 		return nil, err
 	}
