@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-
-	"html-link-parser/models"
 )
 
 func main() {
@@ -21,7 +19,7 @@ func main() {
 		}
 	}()
 
-	links, err := models.BuildLinks(htmlFile)
+	links, err := BuildLinks(htmlFile)
 	if err != nil {
 		log.Fatalf("Unable to build HTML: %v", err.Error())
 	}

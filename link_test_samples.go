@@ -1,4 +1,4 @@
-package models
+package main
 
 var testHtml = map[string]string{
 	"single link": `<html>
