@@ -1,6 +1,7 @@
 package link
 
 import (
+	"fmt"
 	"io"
 	"reflect"
 	"strings"
@@ -94,4 +95,48 @@ func TestLinks_GetUrls(t *testing.T) {
 	}
 }
 
-// TODO: Add Examples
+func ExampleBuildLinks() {
+	html := `<html>
+<body>
+  <h1>Hello!</h1>
+  <a href="/other-page">A link to another page</a>
+  <a href="/another-page">A link to yet another page</a>
+</body>
+</html>
+`
+	links, _ := BuildLinks(strings.NewReader(html))
+	fmt.Printf("%+v", links)
+	// Output: [{Url:/other-page Text:A link to another page} {Url:/another-page Text:A link to yet another page}]
+}
+
+func ExampleLinks_GetTexts() {
+	links := Links{
+		Link{
+			Url:  "github.com",
+			Text: "share repository",
+		},
+		Link{
+			Url: "reddit.com",
+		},
+	}
+
+	texts := links.GetTexts()
+	fmt.Printf("%#v", texts)
+	// Output: []string{"share repository", ""}
+}
+
+func ExampleLinks_GetUrls() {
+	links := Links{
+		Link{
+			Url:  "github.com",
+			Text: "share repository",
+		},
+		Link{
+			Text: "view profile",
+		},
+	}
+
+	urls := links.GetUrls()
+	fmt.Printf("%#v", urls)
+	// Output: []string{"github.com", ""}
+}
