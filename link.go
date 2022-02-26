@@ -1,10 +1,9 @@
 package main
 
 import (
+	"golang.org/x/net/html"
 	"io"
 	"strings"
-
-	"golang.org/x/net/html"
 )
 
 const (
@@ -77,7 +76,7 @@ func linkFromNode(node *html.Node) (link Link) {
 	}
 
 	// set Text
-	link.Text = iterateTextNodes(node, &link)
+	link.Text = strings.TrimSpace(iterateTextNodes(node, &link))
 	return link
 }
 
@@ -88,7 +87,7 @@ func iterateTextNodes(node *html.Node, link *Link) string {
 	for child := node.FirstChild; child != nil; child = child.NextSibling {
 		// append the data when the child is a text
 		if child.Type == html.TextNode {
-			text += " " + strings.TrimSpace(child.Data)
+			text += trimDuplicateSpaces(child.Data)
 
 			// recurse if the child is an element
 		} else if child.Type == html.ElementNode {

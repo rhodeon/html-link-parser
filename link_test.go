@@ -67,7 +67,7 @@ func TestBuildLinks(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got, _ := BuildLinks(tt.in)
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Got: %#v;\nWant: %#v", got, tt.want)
+				t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, tt.want)
 			}
 		})
 	}
@@ -80,7 +80,7 @@ func TestLinks_GetTexts(t *testing.T) {
 	got := links.GetUrls()
 
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("Got: %#v;\nWant: %#v", got, want)
+		t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, want)
 	}
 }
 
@@ -90,6 +90,6 @@ func TestLinks_GetUrls(t *testing.T) {
 	got := links.GetTexts()
 
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("Got: %#v;\nWant: %#v", got, want)
+		t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, want)
 	}
 }
