@@ -1,4 +1,4 @@
-package main
+package link
 
 var testHtml = map[string]string{
 	"single link": `<html>

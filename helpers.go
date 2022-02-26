@@ -1,16 +1,9 @@
-package main
+package link
 
 import (
-	"flag"
 	"strings"
 	"unicode"
 )
-
-func parseFlags() (html *string) {
-	html = flag.String("HTML", "resources/ex2.html", "Name of HTML file to parse.")
-	flag.Parse()
-	return
-}
 
 // trimDuplicateSpaces reduces multiple whitespaces at the beginning and end
 // of a string to one each.

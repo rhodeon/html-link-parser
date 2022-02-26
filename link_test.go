@@ -1,4 +1,4 @@
-package main
+package link
 
 import (
 	"io"
@@ -93,3 +93,5 @@ func TestLinks_GetUrls(t *testing.T) {
 		t.Errorf("\nGot: \t%#v;\nWant: \t%#v", got, want)
 	}
 }
+
+// TODO: Add Examples
